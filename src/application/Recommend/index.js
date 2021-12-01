@@ -1,40 +1,68 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Swiper from '../../components/swiper';
 import RecommendList from '../../components/recommendList';
 import Scroll from '../../components/scroll'
 import { WholeContainer, Content, SwiperContainer } from './style';
+import { connect } from 'react-redux';
+import {
+	getBannerListAction,
+	getRecommendListAction
+} from '../../application/Recommend/store/actionCreator';
+import { forceCheck } from 'react-lazyload';
+import Loading from '../../baseUI/loading/index';
 
 function Recommend (props) {
-	const bannerList = [1,2,3,4].map (item => {
-		return "http://p1.music.126.net/ZYLJ2oZn74yUz5x8NBGkVA==/109951164331219056.jpg"
-	});
-	const recommendList = [1,2,3,4,5,6,7,8,9,10].map (item => {
-		return {
-		id: 1,
-		picUrl: "https://p1.music.126.net/fhmefjUfMD-8qtj3JKeHbA==/18999560928537533.jpg",
-		playCount: 17171122,
-		name: "朴树、许巍、李健、郑钧、老狼、赵雷"
+
+	const { bannerList, recommendList, enterLoading} = props;
+	const { getBannerListDispatch, getRecommendListDispatch } = props;
+	useEffect(() => {
+		if (!bannerList.size){
+			getBannerListDispatch ();
 		}
-	});
+		if (!recommendList.size){
+			getRecommendListDispatch ();
+		}
+	}, []);
+	const bannerListJS = bannerList ? bannerList.toJS () : [];
+	const recommendListJS = recommendList ? recommendList.toJS () :[];
+	
 	return (
 		<Content>
-			<Scroll>
+			<Scroll onScroll={forceCheck}>
 				<div>
 					<div className="before"></div>
 					<WholeContainer>
 						<SwiperContainer>
+							
 							<Swiper 
-								list={bannerList} 
+								list={bannerListJS} 
 								slideButton={false}
 								paginationActiveColor='#d44439'
 							/>
 						</SwiperContainer>
 					</WholeContainer>
-					<RecommendList recommendList={recommendList}/>
+					<RecommendList recommendList={recommendListJS}/>
 				</div>
 			</Scroll>
+			{enterLoading && <Loading/>}
+			
 		</Content>
 	)
 }
 
-export default Recommend;
+const mapState = (state) => ({
+	bannerList: state.getIn(['recommend', 'bannerList']),
+	recommendList: state.getIn(['recommend', 'recommendList']),
+	enterLoading: state.getIn(['recommend', 'enterLoading']),
+})
+
+const mapDispatch = (dispatch) => ({
+	getBannerListDispatch() {
+        dispatch(getBannerListAction);
+	},
+    getRecommendListDispatch() {
+        dispatch(getRecommendListAction);
+    }
+})
+
+export default connect(mapState, mapDispatch)(Recommend);
