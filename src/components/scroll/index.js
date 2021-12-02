@@ -3,12 +3,14 @@ import React, {
     useState, 
     useRef, 
     useEffect,
-    useImperativeHandle
+    useImperativeHandle,
+    useMemo
 } from "react"
 import PropTypes from "prop-types"
 import BScroll from "better-scroll";
 import { ScrollContainer } from './style'
-
+import Loading from '../../baseUI/loading';
+import { debounce } from '../../api/utils';
 
 const Scroll = forwardRef ((props, ref) => {
     const [ bScroll, setBScroll] = useState();
@@ -25,6 +27,14 @@ const Scroll = forwardRef ((props, ref) => {
         bounceTop,
         bounceBottom,
     } = props;
+
+    const pullUpCallback = useMemo(() => {
+        return debounce(pullUp);
+    }, [pullUp]);
+
+    const pullDownCallback = useMemo(() => {
+        return debounce(pullDown);
+    }, [pullDown]);
 
     // 初始化BScroll实例
     useEffect(() => {
@@ -67,7 +77,7 @@ const Scroll = forwardRef ((props, ref) => {
         if(!bScroll || !pullUp) return;
         bScroll.on('scrollEnd', () => {
             if (bScroll.y <= bScroll.maxScrollY + 100){
-                pullUp ();
+                pullUpCallback();
             }
         })
         return () => {
@@ -81,7 +91,7 @@ const Scroll = forwardRef ((props, ref) => {
         bScroll.on ('touchEnd', (pos) => {
             // 判断用户的下拉动作
             if (pos.y > 50) {
-                pullDown ();
+                pullDownCallback();
             }
         });
         return () => {
@@ -108,6 +118,12 @@ const Scroll = forwardRef ((props, ref) => {
     return (
         <ScrollContainer ref={scrollContaninerRef}>
             {props.children}
+
+            {/* 滑到底部加载动画 */}
+            { pullUpLoading && <Loading/> }
+
+            {/* 顶部下拉刷新动画 */}
+            { pullDownLoading && <Loading/> }
         </ScrollContainer>
     )
 })
