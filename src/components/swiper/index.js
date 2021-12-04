@@ -114,7 +114,6 @@ function Swiper(props) {
 
     // 分页器点击响应函数
     const handlePaginationClick = index => {
-        console.log(`${index} clicked`);
         setCurrentPage(index);
     }
 

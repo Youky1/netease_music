@@ -22,7 +22,7 @@ function Recommend (props) {
 		if (!recommendList.size){
 			getRecommendListDispatch ();
 		}
-	}, []);
+	});
 	const bannerListJS = bannerList ? bannerList.toJS () : [];
 	const recommendListJS = recommendList ? recommendList.toJS () :[];
 	

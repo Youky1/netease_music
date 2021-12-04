@@ -83,7 +83,7 @@ const Scroll = forwardRef ((props, ref) => {
         return () => {
             bScroll.off('scrollEnd');
         }
-    }, [ bScroll, pullUp])
+    }, [ bScroll, pullUp, pullUpCallback])
 
     // 进行下拉到底的判断
     useEffect (() => {
@@ -97,7 +97,7 @@ const Scroll = forwardRef ((props, ref) => {
         return () => {
             bScroll.off ('touchEnd');
         }
-    }, [pullDown, bScroll])
+    }, [pullDown, bScroll, pullDownCallback])
 
     // 暴露刷新方法
     useImperativeHandle(ref, () => {

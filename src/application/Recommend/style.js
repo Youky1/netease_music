@@ -25,6 +25,6 @@ export const Content = styled.div`
         top: -300px;
         height: 400px;
         width: 100%;
-        background: ${style ["theme-color"]};
+        background: ${style["theme-color"]};
     }
 `

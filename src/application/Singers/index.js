@@ -45,7 +45,7 @@ function Singers (props) {
 	}
 	useEffect(() => {
 		getHotSingerDispatch();
-	},[]);
+	});
 	const { singerList = [] } = props;
 	const singerListElement = (
 		<List>

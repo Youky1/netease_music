@@ -12,14 +12,13 @@ import {
 function Rank (props) {
   const {
     rankList,
-    isLoading,
     getRankListDispatch
   } = props;
   const list = rankList.toJS();
 
   useEffect(() => {
     getRankListDispatch();
-  }, []);
+  });
 
   const globalStartIndex = filterIndex (list);
   const officialList = list.slice (0, globalStartIndex);
@@ -31,20 +30,19 @@ function Rank (props) {
         <img src={item.coverImgUrl} alt={item.name} />
         <Frequency>{item.updateFrequency}</Frequency>
         <div className="list_container">
-          {item.tracks.map((i, index)  => <div className='item'>{index}. {i.first} - {i.second}</div>)}
+          {item.tracks.map((i, index)  => <div className='item' key={index}>{index}. {i.first} - {i.second}</div>)}
         </div>
       </OfficialRankContainer>
     </div>
   ));
 
-  const globalRankList = globalList.map((item) => (
-    <div className="item">
+  const globalRankList = globalList.map((item,index) => (
+    <div className="item"  key={index}>
       <img src={item.coverImgUrl} alt={item.name} />
       <Frequency>{item.updateFrequency}</Frequency>
     </div>
   ))
 
-  console.log('globalList: ', globalList)
   return (
     <div>
       <Title>官方榜</Title>

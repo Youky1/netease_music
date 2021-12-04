@@ -24,8 +24,8 @@ export const List = styled.div`
   overflow: hidden;
   .title {
     margin:10px 0 10px 10px;
-    color: ${style ["font-color-desc"]};
-    font-size: ${style ["font-size-s"]};
+    color: ${style["font-color-desc"]};
+    font-size: ${style["font-size-s"]};
   }
 `;
 export const ListItem = styled.div`
@@ -35,7 +35,7 @@ export const ListItem = styled.div`
   margin: 0 5px;
   padding: 5px 0;
   align-items: center;
-  border-bottom: 1px solid ${style ["border-color"]};
+  border-bottom: 1px solid ${style["border-color"]};
   .img_wrapper {
     margin-right: 20px;
     img {
@@ -45,8 +45,8 @@ export const ListItem = styled.div`
     }
   }
   .name {
-    font-size: ${style ["font-size-m"]};
-    color: ${style ["font-color-desc"]};
+    font-size: ${style["font-size-m"]};
+    color: ${style["font-color-desc"]};
     font-weight: 500;
   }
 `;
