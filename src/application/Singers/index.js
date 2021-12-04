@@ -44,7 +44,6 @@ function Singers (props) {
 		updateDispatch(val, alpha);
 	}
 	useEffect(() => {
-		console.log('effect')
 		getHotSingerDispatch();
 	},[]);
 	const { singerList = [] } = props;

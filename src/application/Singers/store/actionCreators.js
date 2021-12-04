@@ -48,7 +48,6 @@ export const changePullDownLoading = (data) => {
 export const getHotSingerList = () => (dispatch) => {
     getHotSingerListRequest(0)
     .then(res => {
-        console.log('false')
         dispatch(changeSingerList(res.artists));
         dispatch(changeEnterLoading(false));
         dispatch(changePullUpLoading(false));

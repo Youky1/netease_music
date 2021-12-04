@@ -17,7 +17,6 @@ const defaultState = fromJS({
 export default function reducer(state = defaultState, action) {
 	switch(action.type){
 		case CHANGE_SINGER_LIST:{
-      console.log('change: ',action.data)
       return state.set('singerList', action.data);
     }
       
