@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Outlet, useNavigate } from 'react-router';
 import { getRankList } from './store';
 import { filterIndex } from '../../api/utils';
 import {
@@ -24,8 +25,14 @@ function Rank (props) {
   const officialList = list.slice (0, globalStartIndex);
   const globalList = list.slice (globalStartIndex);
 
+  const nav = useNavigate();
+
   const officialRankList = officialList.map((item) => (
-    <div style={{position: 'relative'}} key={item.ToplistType}>
+    <div 
+      style={{position: 'relative'}} 
+      key={item.ToplistType} 
+      onClick={() => nav(`${item.id}`)}
+    >
       <OfficialRankContainer>
         <img src={item.coverImgUrl} alt={item.name} />
         <Frequency>{item.updateFrequency}</Frequency>
@@ -44,14 +51,17 @@ function Rank (props) {
   ))
 
   return (
-    <div>
-      <Title>官方榜</Title>
-      {officialRankList}
-      <Title>全球榜</Title>
-      <GlobalRankContainer>
-        {globalRankList}
-      </GlobalRankContainer>
-    </div>
+    <>
+      <div>
+        <Title>官方榜</Title>
+        {officialRankList}
+        <Title>全球榜</Title>
+        <GlobalRankContainer>
+          {globalRankList}
+        </GlobalRankContainer>
+      </div>
+      <Outlet/>
+    </>
   )
 }
 

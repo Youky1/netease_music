@@ -2,7 +2,8 @@ import GlobalStyle from './style';
 import { BrowserRouter as Router } from 'react-router-dom'
 import RouteWrapper from './routes';
 import store from './store';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
+import 'animate.css';
 function App() {
   return (
     <Provider store={store}>
