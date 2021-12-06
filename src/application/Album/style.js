@@ -83,39 +83,6 @@ export const TopContainer = styled.div`
   }
 `
 
-export const ListItem = styled.div`
-  width: 100%;
-  height: 60px;
-  display: flex;
-  .number {
-    height: 100%;
-    width: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: ${style['font-size-ll']};
-  }
-  .song {
-    height: 100%;
-    width: 80%;
-    border-bottom: 1px solid ${style['border-color']};
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    p {
-      ${style['noWrap']}
-    }
-    p:first-child {
-      font-size: ${style['font-size-ll']};
-      height: 22px;
-    }
-    p:last-child {
-      font-size: ${style['font-size-m']};
-      color: ${style['font-color-desc-v2']};
-    }
-  }
-`
-
 export const ListHeader = styled.div`
   display: flex;
   height: 60px;

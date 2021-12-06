@@ -16,6 +16,12 @@ const noWrap = () => {
     white-space: nowrap;
   `
 }
+
+const flex = () => `
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 const style = {
   'theme-color': '#d44439',
   'theme-color-shadow': 'rgba (212, 68, 57, .5)',
@@ -32,6 +38,7 @@ const style = {
   'background-color-shadow': 'rgba (0, 0, 0, 0.3)',
   'highlight-background-color': '#fff',
   extendClick,
-  noWrap
+  noWrap,
+  flex
 }
 export default style
