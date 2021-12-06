@@ -40,3 +40,7 @@ export const getName = list => {
   });
   return str;
 };
+
+export const isValidChange = (x, y) => {
+  return x - y > 1 || y - x > 4;
+}

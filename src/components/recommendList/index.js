@@ -6,9 +6,11 @@ import {
 } from './style';
 import { getCount } from "../../api/utils";
 import LazyLoad from "react-lazyload";
+import { useNavigate } from "react-router";
 
 function RecommendList(props) {
     const { recommendList } = props;
+    const nav = useNavigate()
     return (
         <ListWrapper>
             <div className="title">推荐歌单</div>
@@ -16,7 +18,7 @@ function RecommendList(props) {
                 {
                     recommendList.map((item, index) => {
                         return (
-                            <ListItem key={index}>
+                            <ListItem key={index} onClick={() => nav(`${item.id}`)}>
                                 <div className="img_wrapper">
                                     <div className="decorate"></div>
 									<LazyLoad placeholder={<img width="100%" height="100%" src={require ('./music.png').default} alt="music"/>}>

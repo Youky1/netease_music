@@ -16,7 +16,13 @@ const routes = [
 			},
 			{
 				path: "recommend",
-				element: <Recommend/>
+				element: <Recommend/>,
+				children:[
+					{ 
+						path: ':id', 
+						element: <Album/>
+					}
+				]
 			},
 			{
 				path: "singers",

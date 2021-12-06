@@ -102,8 +102,12 @@ export const ListItem = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    p {
+      ${style['noWrap']}
+    }
     p:first-child {
       font-size: ${style['font-size-ll']};
+      height: 22px;
     }
     p:last-child {
       font-size: ${style['font-size-m']};

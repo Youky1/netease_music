@@ -10,6 +10,7 @@ import {
 } from '../../application/Recommend/store/actionCreator';
 import { forceCheck } from 'react-lazyload';
 import Loading from '../../baseUI/loading/index';
+import { Outlet } from 'react-router';
 
 function Recommend (props) {
 
@@ -33,7 +34,6 @@ function Recommend (props) {
 					<div className="before"></div>
 					<WholeContainer>
 						<SwiperContainer>
-							
 							<Swiper 
 								list={bannerListJS} 
 								slideButton={false}
@@ -45,7 +45,7 @@ function Recommend (props) {
 				</div>
 			</Scroll>
 			{enterLoading && <Loading/>}
-			
+			<Outlet/>
 		</Content>
 	)
 }
