@@ -13,6 +13,7 @@ import {
 import { getAlbumList } from './store/actionCreators'
 import { useParams } from 'react-router';
 import Loading from '../../baseUI/loading';
+import FixedContainer from '../../baseUI/fixedContainer';
 
 function Album (props) {
   const nav = useNavigate();
@@ -106,7 +107,7 @@ function Album (props) {
   ))
 
   return (
-      <Container className='animate__animated animate__bounceInRight'>
+      <FixedContainer>
         <Header 
           title='返回' 
           handleClick={() => nav(-1)} 
@@ -124,7 +125,7 @@ function Album (props) {
             </div>
           </Scroll>
         }
-      </Container>
+      </FixedContainer>
   )
 }
 
