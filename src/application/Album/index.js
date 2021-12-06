@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
-import {Container} from './style';
-import Header from '../../baseUI/header';
-import {useNavigate} from 'react-router';
-import Scroll from '../../components/scroll';
-import { getCount, getName, isValidChange } from '../../api/utils'
+import { useNavigate, useParams } from 'react-router';
+import { getCount, isValidChange } from '../../api/utils';
+
 import {
   TopContainer,
-  ListItem,
-  ListHeader
 } from './style';
-import { getAlbumList } from './store/actionCreators'
-import { useParams } from 'react-router';
+import { getAlbumList } from './store/actionCreators';
+
 import Loading from '../../baseUI/loading';
 import FixedContainer from '../../baseUI/fixedContainer';
+import Header from '../../baseUI/header';
+
+import Scroll from '../../components/scroll';
+import SongList from '../../components/songList';
 
 function Album (props) {
   const nav = useNavigate();
@@ -80,31 +80,6 @@ function Album (props) {
     </div>
   ))
 
-  // 歌单上面的播放栏
-  const renderListHeader = () => (
-    <ListHeader>
-      <div>
-        <i className="iconfont icon-bofang"></i>
-        播放全部
-        <span>（共{currentAlbum.tracks.length}首）</span>
-      </div>
-      <div>
-        <i className="iconfont icon-jia"></i>
-        收藏（{getCount(currentAlbum.subscribedCount)}）
-      </div>
-    </ListHeader>
-  )
-
-  // 歌单的歌曲列表
-  const renderSongsList = () => currentAlbum.tracks.map((item, index) => (
-    <ListItem key={index}>
-      <div className="number">{index+1}</div>
-      <div className="song">
-        <p>{item.name}</p>
-        <p>{getName(item.ar)} - {item.al.name}</p>
-      </div>
-    </ListItem>
-  ))
 
   return (
       <FixedContainer>
@@ -120,8 +95,11 @@ function Album (props) {
           <Scroll name='name' onScroll={handleScroll}>
             <div>
               {renderTopContainer()}
-              {renderListHeader()}
-              {renderSongsList()}
+              <SongList 
+                list={currentAlbum.tracks} 
+                showCollect={true} 
+                subscribedCount={currentAlbum.subscribedCount}
+              />
             </div>
           </Scroll>
         }
