@@ -1,10 +1,15 @@
-import React from 'react';
-import { useNavigate } from 'react-router';
+import React, {useEffect} from 'react';
+import { useNavigate, useParams } from 'react-router';
+import { connect } from 'react-redux';
 import FixedContainer from '../../baseUI/fixedContainer';
 import Header from '../../baseUI/header';
+import Loading from '../../baseUI/loading';
 import Scroll from '../../components/scroll';
 import SongList from '../../components/songList'
-
+import {
+	getSingerInfoAction,
+	setIsLoading
+} from './store/actionCreators'
 import {
 	BackgroundImage,
 	ImgWrapper,
@@ -15,120 +20,30 @@ import {
 
 function Singer (props) {
 	const nav = useNavigate();
-	const artist = {
-	  picUrl: "https://p2.music.126.net/W__FCWFiyq0JdPtuLJoZVQ==/109951163765026271.jpg",
-	  name: "薛之谦",
-	  hotSongs: [
-	    {
-	      name: "我好像在哪见过你",
-	      ar: [{name: "薛之谦"}],
-	      al: {
-	        name: "薛之谦专辑"
-	      }
-	    },
-	    {
-	      name: "我好像在哪见过你",
-	      ar: [{name: "薛之谦"}],
-	      al: {
-	        name: "薛之谦专辑"
-	      }
-	    },
-			{
-	      name: "我好像在哪见过你",
-	      ar: [{name: "薛之谦"}],
-	      al: {
-	        name: "薛之谦专辑"
-	      }
-	    },
-	    {
-	      name: "我好像在哪见过你",
-	      ar: [{name: "薛之谦"}],
-	      al: {
-	        name: "薛之谦专辑"
-	      }
-	    },
-			{
-	      name: "我好像在哪见过你",
-	      ar: [{name: "薛之谦"}],
-	      al: {
-	        name: "薛之谦专辑"
-	      }
-	    },
-	    {
-	      name: "我好像在哪见过你",
-	      ar: [{name: "薛之谦"}],
-	      al: {
-	        name: "薛之谦专辑"
-	      }
-	    },
-			{
-	      name: "我好像在哪见过你",
-	      ar: [{name: "薛之谦"}],
-	      al: {
-	        name: "薛之谦专辑"
-	      }
-	    },
-	    {
-	      name: "我好像在哪见过你",
-	      ar: [{name: "薛之谦"}],
-	      al: {
-	        name: "薛之谦专辑"
-	      }
-	    },
-			{
-	      name: "我好像在哪见过你",
-	      ar: [{name: "薛之谦"}],
-	      al: {
-	        name: "薛之谦专辑"
-	      }
-	    },
-	    {
-	      name: "我好像在哪见过你",
-	      ar: [{name: "薛之谦"}],
-	      al: {
-	        name: "薛之谦专辑"
-	      }
-	    },
-			{
-	      name: "我好像在哪见过你",
-	      ar: [{name: "薛之谦"}],
-	      al: {
-	        name: "薛之谦专辑"
-	      }
-	    },
-	    {
-	      name: "我好像在哪见过你",
-	      ar: [{name: "薛之谦"}],
-	      al: {
-	        name: "薛之谦专辑"
-	      }
-	    },
-			{
-	      name: "我好像在哪见过你",
-	      ar: [{name: "薛之谦"}],
-	      al: {
-	        name: "薛之谦专辑"
-	      }
-	    },
-	    {
-	      name: "我好像在哪见过你",
-	      ar: [{name: "薛之谦"}],
-	      al: {
-	        name: "薛之谦专辑"
-	      }
-	    },
-	  ]
-	}
+	const {
+		artist,
+		songs,
+		isLoading,
+		initSingerInfoDispatch
+	} = props;
+	const params = useParams();
+	useEffect(() => {
+		initSingerInfoDispatch(params.id)
+	},[params.id]);
   return (
 		<FixedContainer>
-			<Header 
-				title={artist.name}
-				handleClick={() => nav(-1)} 
-      />
-			<BackgroundImage url={artist.picUrl}>
+			{isLoading && <Loading/>}
+			{
+				!isLoading &&
+				<>
+					<Header 
+						title={artist.name}
+						handleClick={() => nav(-1)} 
+      		/>
+					<BackgroundImage url={artist.picUrl}>
 				<div className="filter"></div>
-			</BackgroundImage>
-			<ScrollWrapper id='out'>
+					</BackgroundImage>
+					<ScrollWrapper id='out'>
 				<Scroll>
 					<div id='in'>
 						<ImgWrapper>
@@ -136,16 +51,30 @@ function Singer (props) {
 						</ImgWrapper>
 						<SongWrapper>
 							<SongList
-								list={artist.hotSongs}
+								list={songs}
 								showCollect={false}
 							/>
 						</SongWrapper>
 					</div>
       	</Scroll>
-			</ScrollWrapper>
-      
+					</ScrollWrapper>
+				</>
+      }
 		</FixedContainer>
   )
 }
 
-export default Singer;
+const mapState = state => ({
+	artist: state.getIn(['singer', 'artist']),
+	songs: state.getIn(['singer', 'songs']),
+	isLoading: state.getIn(['singer', 'isLoading']),
+})
+
+const mapDispatch = dispatch => ({
+	initSingerInfoDispatch(id) {
+		dispatch(setIsLoading(true));
+		dispatch(getSingerInfoAction(id));
+	}
+})
+
+export default connect(mapState, mapDispatch)(Singer);
