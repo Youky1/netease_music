@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router';
 
 import { categoryTypes, alphaTypes } from '../../api/config';
 import Horizon from '../../baseUI/horizonItem';
@@ -21,10 +22,12 @@ import {
   changePullDownLoading, 
   refreshMoreHotSingerList 
 } from './store/actionCreators';
+import { Outlet } from 'react-router';
 
 function Singers (props) {
 	const [category, setCategory] = useState ('');
 	const [alpha, setAlpha] = useState ('');
+	const nav = useNavigate();
 	const { 
 		updateDispatch,
 		getHotSingerDispatch,
@@ -33,7 +36,8 @@ function Singers (props) {
 		pageCount,
 		pullUpLoading,
 		pullDownLoading,
-		enterLoading
+		enterLoading,
+		singerList = []
 	} = props;
 	const handleUpdateAlpha = (val) => {
 		setAlpha (val);
@@ -46,12 +50,13 @@ function Singers (props) {
 	useEffect(() => {
 		getHotSingerDispatch();
 	});
-	const { singerList = [] } = props;
+
+	// 歌手列表
 	const singerListElement = (
 		<List>
 			{
 				singerList.toJS().map((item, index) => (
-					<ListItem key={item.accountId+""+index}>
+					<ListItem key={item.accountId+""+index} onClick={() => nav(`${item.id}`)}>
 						<div className="img_wrapper">
 							<img 
 								src={`${item.picUrl}?param=300x300`} 
@@ -92,6 +97,7 @@ function Singers (props) {
   					pullDownLoading = { pullDownLoading }
 				>{singerListElement}</Scroll>
 			</ListContainer>
+			<Outlet/>
 		</>
   	)
 }
