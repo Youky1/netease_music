@@ -5,6 +5,7 @@ import Singers from '../application/Singers';
 import Rank from '../application/Rank';
 import Album from '../application/Album';
 import Singer from '../application/Singer';
+import Player from '../application/Player';
 
 const routes = [
   	{
@@ -49,5 +50,5 @@ const routes = [
 		]
   	}
 ]
-const RouteWrapper = () => <>{useRoutes(routes)}</>
+const RouteWrapper = () => <>{useRoutes(routes)}<Player/></>
 export default RouteWrapper;

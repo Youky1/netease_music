@@ -44,3 +44,11 @@ export const getName = list => {
 export const isValidChange = (x, y) => {
   return x - y > 1 || y - x > 4;
 }
+
+export function getAbsX(e) {   
+  var x = e.offsetLeft;   
+  while(e=e.offsetParent) {
+   x += e.offsetLeft;
+  }
+  return x;  
+}
