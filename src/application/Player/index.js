@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import { connect } from "react-redux";
 import {
   changePlayingState,
@@ -43,20 +43,26 @@ function Player (props) {
   const toastRef = useRef();  // 提示框DOM
   const [modeText, setModeText] = useState(""); // 提示框文字
 
-  const startPlay = () => {
+  const startPlay = useCallback(() => {
+    let noCopyright = true;
+    audioRef.current.addEventListener('canplay', () => {
+      noCopyright = false;
+      audioRef.current.play()
+      .then(() => togglePlayingDispatch(true))
+    });
     setTimeout(() => {
-      audioRef.current.play().catch(e => {
+      if(noCopyright) {
         setModeText('这首歌暂时没有版权哦');
         toastRef.current.show();
-      })
-    })
-  }
+      }
+    },5000)
+  },[])
 
   useEffect(() => {
     if(isPlaying) {
       startPlay();
     }
-  }, [isPlaying])
+  }, [isPlaying, startPlay])
 
   useEffect(() => {
     if(currentIndex >= 0) {
@@ -65,15 +71,15 @@ function Player (props) {
       audioRef.current.src = getSongUrl(current.id); // 为audio标签添加资源
       setDuration((current.dt / 1000) | 0); // 初始化设置时长
     }
-  }, [immutableList, currentIndex]);
+  }, [immutableList, currentIndex, startPlay]);
 
   // 切换播放状态
   const handleIsPlaying = (status) => {
-    togglePlayingDispatch(status);
     if(status) {
       startPlay();
     }else {
       audioRef.current.pause();
+      togglePlayingDispatch(false);
     }
   }
 
