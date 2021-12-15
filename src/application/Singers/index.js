@@ -49,7 +49,7 @@ function Singers (props) {
 	}
 	useEffect(() => {
 		getHotSingerDispatch();
-	},[]);
+	},[getHotSingerDispatch]);
 
 	// 歌手列表
 	const singerListElement = (

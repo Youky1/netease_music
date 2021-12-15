@@ -29,7 +29,7 @@ function Singer (props) {
 	const params = useParams();
 	useEffect(() => {
 		initSingerInfoDispatch(params.id)
-	},[params.id]);
+	},[params.id,initSingerInfoDispatch]);
   return (
 		<FixedContainer>
 			{isLoading && <Loading/>}

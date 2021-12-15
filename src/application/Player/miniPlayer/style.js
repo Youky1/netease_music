@@ -52,7 +52,7 @@ export const MiniPlayerContainer = styled.div`
       ${style.noWrap ()}
     }
     .desc {
-      font-size: ${style ["font-size-s"]};
+      font-size: ${style["font-size-s"]};
       color: ${style["font-color-desc-v2"]};
       ${style.noWrap ()}
     }

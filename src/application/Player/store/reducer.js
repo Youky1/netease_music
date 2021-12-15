@@ -17,7 +17,7 @@ const defaultState = fromJS({
   currentSong: {},          // 当前播放的歌曲
 })
 
-export default (state = defaultState, action) => {
+export default function reducer(state = defaultState, action) {
   switch (action.type) {
     case actionTypes.SET_CURRENT_SONG:
       return state.set ('currentSong', action.data);

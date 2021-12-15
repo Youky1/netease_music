@@ -56,7 +56,7 @@ function NormalPlayer(props) {
           </NormalHeader>
         
           <ImageContainer>
-            <img src={song.al.picUrl} className={'rotate ' + (isPlaying ? '' : 'pause')}/>
+            <img src={song.al.picUrl} alt={song.name} className={'rotate ' + (isPlaying ? '' : 'pause')}/>
           </ImageContainer>
           
           <ProgressWrapper>
