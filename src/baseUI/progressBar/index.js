@@ -78,7 +78,7 @@ function ProgressBar (props) {
   return (
     <ProgressBarWrapper>
       <div className="progress" ref={progressContainer} onClick={handleProgressClick}>
-        <BtnWrapper percentage={percentage}>
+        <BtnWrapper percentage={`${percentage * 100}%`}>
           <div 
             className="progress-btn" 
             ref={btnRef}

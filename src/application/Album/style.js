@@ -15,15 +15,6 @@ export const TopContainer = styled.div`
   height: 36vh;
   overflow: hidden;
   position: relative;
-  .background {
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-    background-image: url("http://p2.music.126.net/ecpXnH13-0QWpWQmqlR0gw==/109951164354856816.jpg");
-    background-size: 100% 100%;
-    position: absolute;
-    filter: blur(10px);
-  }
   .content {
     display: flex;
     margin-top: 60px;
@@ -81,4 +72,14 @@ export const TopContainer = styled.div`
       }
     }
   }
+`
+
+export const TopBackground = styled.div`
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background-image: url(${props => `${props.background}`});
+  background-size: 100% 100%;
+  position: absolute;
+  filter: blur(10px);
 `

@@ -10,7 +10,7 @@ const defaultState = fromJS({
   fullScreen: false,        // 是否为全屏
   isPlaying: false,           // 是否在播放
   sequencePlaylist: [],     // 顺序播放列表
-  playlist: [],             // 播放列表
+  playList: [],             // 播放列表
   mode: playMode.sequence,  // 播放模式
   currentIndex: -1,         // 当前播放的歌曲在列表中的下标
   showPlaylist: false,      // 是否显示播放列表
@@ -35,6 +35,11 @@ export default (state = defaultState, action) => {
       return state.set ('currentIndex', action.data);
     case actionTypes.SET_SHOW_PLAYLIST:
       return state.set ('showPlayList', action.data);
+    case actionTypes.DELETE_SONG: {
+      const list = state.get('playList').toJS();
+      list.splice(action.data,1);
+      return state.set('playList', fromJS(list));
+    }
     default:
       return state;
   }

@@ -5,6 +5,7 @@ import { getCount, isValidChange } from '../../api/utils';
 
 import {
   TopContainer,
+  TopBackground
 } from './style';
 import { getAlbumList } from './store/actionCreators';
 
@@ -41,7 +42,7 @@ function Album (props) {
   // 歌单顶部信息栏
   const renderTopContainer = () => (
     <TopContainer>
-      <div className="background" background={currentAlbum.coverImgUrl}></div>
+      <TopBackground background={currentAlbum.coverImgUrl}></TopBackground>
       <div className="content">
         <div className="left_box">
           <img src={currentAlbum.coverImgUrl} alt={currentAlbum.name} />

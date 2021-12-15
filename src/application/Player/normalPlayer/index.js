@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import { getName } from "../../../api/utils";
+import React from "react";
+import { getName, formatPlayTime } from "../../../api/utils";
 import {
   NormalContainer,
   NormalHeader,
@@ -10,18 +10,30 @@ import {
 import ProgressBar from "../../../baseUI/progressBar/index";
 
 function NormalPlayer(props) {
-  const { song, fullScreen, toggleFullScreen } = props;
-  const [persentage, setPercentage] = useState(0);
-  const icons = [
-    'icon-shunxubofang',
-    'icon-shangyishoushangyige',
-    'icon-zanting1',
-    'icon-xiayigexiayishou',
-    'icon-gedan'
-  ]
-  const renderIcons = () => {
-    return icons.map(item => <span className={'iconfont '+item} key={item}></span>)
+  const { 
+    song, 
+    fullScreen, 
+    isPlaying,
+    percent,
+    duration,
+    currentTime,
+    mode,
+  } = props;
+  const {
+    togglePlaying,
+    toggleFullScreen,
+    handleProgressChange,
+    handleModeChange,
+    handleSwitchToPrev,
+    handleSwitchToNext,
+    togglePlayList,
+  } = props;
+  const playBtnClass = () => {
+    return isPlaying ? 'iconfont icon-zanting1' : 'iconfont icon-bofang-copy';
   }
+
+  const modeBtn = ['icon-shunxubofang', 'icon-danquxunhuan', 'icon-suijibofang']
+  
   return (
     <>
       {
@@ -44,19 +56,38 @@ function NormalPlayer(props) {
           </NormalHeader>
         
           <ImageContainer>
-            <img src={song.al.picUrl} className='rotate'/>
+            <img src={song.al.picUrl} className={'rotate ' + (isPlaying ? '' : 'pause')}/>
           </ImageContainer>
           
           <ProgressWrapper>
-            <span className="time time-left">0:00</span>
+            <span className="time time-left">{formatPlayTime(currentTime)}</span>
             <div className="progress-bar-wrapper">
-              <ProgressBar percentage={persentage} setPercentage={setPercentage}></ProgressBar>
+              <ProgressBar percentage={percent} setPercentage={handleProgressChange}></ProgressBar>
             </div>
-            <div className="time time-right">4:17</div>
+            <div className="time time-right">{formatPlayTime(duration)}</div>
           </ProgressWrapper>
         
           <OptionBar>
-            {renderIcons()}
+            <span 
+              className={`iconfont ${modeBtn[mode]}`}
+              onClick={handleModeChange}
+            ></span>
+            <span 
+              className={'iconfont icon-shangyishoushangyige'}
+              onClick={handleSwitchToPrev}
+            ></span>
+            <span 
+              className={playBtnClass()}
+              onClick={() => togglePlaying(!isPlaying)}
+            ></span>
+            <span 
+              className={'iconfont icon-xiayigexiayishou'}
+              onClick={handleSwitchToNext}
+            ></span>
+            <span 
+              className={'iconfont icon-gedan'}
+              onClick={togglePlayList}
+            ></span>
           </OptionBar>
         </NormalContainer>
       }
