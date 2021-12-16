@@ -27,3 +27,15 @@ export const getAlbumDetailRequest = id => {
 export const getSingerInfoRequest = id => {
   return instance.get (`/artists?id=${id}`);
 };
+
+export const getHotKeyWordsRequest = () => {
+  return instance.get (`/search/hot`);
+};
+
+export const getSuggestListRequest = query => {
+  return instance.get (`/search/suggest?keywords=${query}`);
+};
+
+export const getResultSongsListRequest = query => {
+  return instance.get (`/search?keywords=${query}`);
+};
