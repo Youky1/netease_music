@@ -9,12 +9,14 @@ export const Title = styled.p`
 export const HeaderContainer = styled.div`
   height: 5vh;
   padding-top: 10px;
-  /* ${style.flex} */
   i {
     margin: 0 8px;
   }
+  i:last-child {
+    opacity: 0.5;
+  }
   input {
-    width: 80%;
+    width: 75%;
     margin-left: 20px;
     border: none;
     border-bottom: 1px solid ${style['border-color']};
@@ -78,4 +80,29 @@ export const SuggestContainer = styled.div`
     }
   }
 
+`
+
+export const SearchResult = styled.div`
+  height: 90vh;
+  width: 100vw;
+  padding-top: 5vh;
+  position: fixed;
+  bottom:0;
+  z-index: 1000000;
+  background-color: #fff;
+  .search-item {
+    height: 60px;
+    border-bottom: 1px solid ${style['border-color']};
+    padding: 0 40px;
+    ${style.noWrap}
+    ${style.flex}
+    justify-content: flex-start;
+    span:first-child {
+      font-size: 22px;
+    }
+    span:last-child {
+      font-size: 12px;
+      font-style: italic;
+    }
+  }
 `

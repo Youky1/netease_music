@@ -22,7 +22,6 @@ function PlayList(props) {
   // 隐藏歌单列表
   const handleOutsideClick = e => {
     if(e.target === outsideRef.current) {
-      console.log('click')
       togglePlayList()
     }
   }
