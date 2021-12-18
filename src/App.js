@@ -1,5 +1,5 @@
 import GlobalStyle from './style';
-import { BrowserRouter as Router } from 'react-router-dom'
+import { HashRouter as Router } from 'react-router-dom'
 import RouteWrapper from './routes';
 import store from './store';
 import { Provider } from 'react-redux';
