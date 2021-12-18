@@ -51,45 +51,45 @@
 
 ### 主页推荐
 
-![1639798606001](README.assets\1639798606001.png)
+![1639798606001](https://github.com/Youky1/netease_music/blob/master/README.assets/1639798606001.png)
 
 ### 歌单详情
 
-![1639798634574](README.assets\1639798634574.png)
+![1639798634574](https://github.com/Youky1/netease_music/blob/master/README.assets/1639798634574.png)
 
 
 
 ### 歌手页面
 
-![1639798666052](README.assets\1639798666052.png)
+![1639798666052](https://github.com/Youky1/netease_music/blob/master/README.assets/1639798666052.png)
 
 ### 歌手详情
 
-![1639798687406](README.assets\1639798687406.png)
+![1639798687406](https://github.com/Youky1/netease_music/blob/master/README.assets/1639798687406.png)
 
 ### 排行榜页面
 
-![1639798733250](README.assets\1639798733250.png)
+![1639798733250](https://github.com/Youky1/netease_music/blob/master/README.assets/1639798733250.png)
 
 
 
 ### 播放器界面
 
-![1639798760767](README.assets\1639798760767.png)
+![1639798760767](https://github.com/Youky1/netease_music/blob/master/README.assets/1639798760767.png)
 
 
 
-![1639798771645](C:\Users\asus2018\Desktop\cloud-music\README.assets\1639798771645.png)
+![1639798771645](https://github.com/Youky1/netease_music/blob/master/README.assets/1639798771645.png)
 
 ### 播放列表
 
-![1639798836172](README.assets\1639798836172.png)
+![1639798836172](https://github.com/Youky1/netease_music/blob/master/README.assets/1639798836172.png)
 
 
 
 ### 搜索页面
 
-![1639798880309](README.assets\1639798880309.png)
+![1639798880309](https://github.com/Youky1/netease_music/blob/master/README.assets/1639798880309.png)
 
-![1639798892303](README.assets\1639798892303.png)
+![1639798892303](https://github.com/Youky1/netease_music/blob/master/README.assets/1639798892303.png)
 
