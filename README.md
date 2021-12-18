@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+# 基于React实现的仿网易云web应用
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[在线预览地址](http://youky.top/netease_music/ ) 
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+## 主要功能
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- 首页推荐
+- 歌手列表
+- 歌手详情
+- 排行榜
+- 歌单详情
+- 播放器
+- 播放列表
+- 搜索
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 主要技术栈
 
-### `npm run build`
+- `React1`(V17)
+- `react-router`(V6)
+- `redux`
+- `redux-immutable`
+- `redux-thunk`
+- `styled-components`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 动画库
 
-### `npm run eject`
+- `animation.css`
+- `react-transition-group`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 针对移动端的改善
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- `better-scroll`
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 后端接口
 
-### Code Splitting
+采用 [Binaryify](https://github.com/Binaryify)大佬提供的[在线接口](https://github.com/Binaryify/NeteaseCloudMusicApi)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 部分效果截图
 
-### Making a Progressive Web App
+### 主页推荐
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![1639798606001](C:\Users\asus2018\Desktop\cloud-music\README.assets\1639798606001.png)
 
-### Advanced Configuration
+### 歌单详情
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![1639798634574](C:\Users\asus2018\Desktop\cloud-music\README.assets\1639798634574.png)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+### 歌手页面
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![1639798666052](C:\Users\asus2018\Desktop\cloud-music\README.assets\1639798666052.png)
+
+### 歌手详情
+
+![1639798687406](C:\Users\asus2018\Desktop\cloud-music\README.assets\1639798687406.png)
+
+### 排行榜页面
+
+![1639798733250](C:\Users\asus2018\Desktop\cloud-music\README.assets\1639798733250.png)
+
+
+
+### 播放器界面
+
+![1639798760767](C:\Users\asus2018\Desktop\cloud-music\README.assets\1639798760767.png)
+
+
+
+![1639798771645](C:\Users\asus2018\Desktop\cloud-music\README.assets\1639798771645.png)
+
+### 播放列表
+
+![1639798836172](C:\Users\asus2018\Desktop\cloud-music\README.assets\1639798836172.png)
+
+
+
+### 搜索页面
+
+![1639798880309](C:\Users\asus2018\Desktop\cloud-music\README.assets\1639798880309.png)
+
+![1639798892303](C:\Users\asus2018\Desktop\cloud-music\README.assets\1639798892303.png)
+
